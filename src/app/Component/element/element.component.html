@@ -1,0 +1,15 @@
+<div class="wrap" >
+  <div class="icon">
+    <i class="fa-solid fa-utensils"></i>
+  </div>
+  <div class="detail">
+    <div class="name">{{Item.name}}</div>
+    <div class="value">
+      <div class="cal" *ngIf="Item.energy">{{Item.energy}} kcal</div>
+      <div class="cal" *ngIf="Item.weight">{{Item.weight}} g</div>
+    </div>
+  </div>
+  <div class="delete">
+    <i class="fa-solid fa-trash" (click)="Delete()"></i>
+  </div>
+</div>

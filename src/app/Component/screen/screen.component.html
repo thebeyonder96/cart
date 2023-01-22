@@ -1,0 +1,40 @@
+<div class="screen">
+  <div class="top">
+    <div class="time">{{hour}}:{{min}}</div>
+    <div class="right">
+      <i class="fa-solid fa-signal"></i>
+      <i class="fa-solid fa-wifi"></i>
+      <i class="fa-solid fa-battery-full"></i>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="back">
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
+    <h2>Breakfast</h2>
+  </div>
+  <div class="element">
+    <app-element *ngFor="let item of itemArr;index as i;" [Item]="item" (delete)="Delete(i)"></app-element>
+  </div>
+  <div class="add" (click)="isSelect=!isSelect" >
+    <i class="fa-solid fa-plus" [ngStyle]="{'rotate': isSelect ? '45deg' : '90deg'}"></i>
+  </div>
+  <div class="open" *ngIf="isSelect">
+    <form (submit)="add()">
+    <div class="inpbox">
+      <input type="text" name="newItem" required="required" [(ngModel)]="addName">
+      <label for="newItem">Enter name..</label>
+    </div>
+    <div class="inpbox">
+      <input type="text" name="newItem" required="required" [(ngModel)]="addEnergy">
+      <label for="newItem">Enter energy..</label>
+    </div>
+    <div class="inpbox">
+      <input type="text" name="newItem" required="required" [(ngModel)]="addWeight">
+      <label for="newItem">Enter weight..</label>
+    </div>
+    <button (click)="add()">Add</button>
+    </form>
+  </div>
+  <div class="bar"></div>
+</div>
