@@ -9,9 +9,14 @@ import { Model } from '../screen/screen.component';
 export class ElementComponent {
  @Input() Item!:Model;
  @Output() delete = new EventEmitter();
+ @Output() editEl = new EventEmitter()
 
  Delete(){
-  this.delete.emit(this.Item)
+  this.delete.emit()
+ }
+
+ getEl(i:Model){
+   this.editEl.emit(i);
  }
 
 }

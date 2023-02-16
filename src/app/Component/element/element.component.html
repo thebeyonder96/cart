@@ -7,9 +7,11 @@
     <div class="value">
       <div class="cal" *ngIf="Item.energy">{{Item.energy}} kcal</div>
       <div class="cal" *ngIf="Item.weight">{{Item.weight}} g</div>
+      <div class="cal" *ngIf="Item.amount">{{Item.amount}}</div>
     </div>
   </div>
   <div class="delete">
+    <i class="fa-solid fa-pen-to-square" (click)="getEl(Item)"></i> &nbsp;
     <i class="fa-solid fa-trash" (click)="Delete()"></i>
   </div>
 </div>

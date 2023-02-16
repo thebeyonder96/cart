@@ -8,33 +8,67 @@
     </div>
   </div>
   <div class="navbar">
-    <div class="back">
+    <div class="back" (click)="this.isSelect = !this.isSelect && this.isEdit = !this.isEdit">
       <i class="fa-solid fa-chevron-left"></i>
     </div>
     <h2>Breakfast</h2>
   </div>
   <div class="element">
-    <app-element *ngFor="let item of itemArr;index as i;" [Item]="item" (delete)="Delete(i)"></app-element>
+    <app-element *ngFor="let item of itemArr;index as i;" [Item]="item" (delete)="Delete(i)" (editEl)="edit($event,i)">
+
+    </app-element>
+    <!-- <div class="del" *ngIf="delPrompt">
+      <h3>Are you sure ?</h3>
+      <button>Yes</button>
+    </div> -->
   </div>
-  <div class="add" (click)="isSelect=!isSelect" >
+  <div class="add" (click)="isSelect=!isSelect">
     <i class="fa-solid fa-plus" [ngStyle]="{'rotate': isSelect ? '45deg' : '90deg'}"></i>
   </div>
   <div class="open" *ngIf="isSelect">
-    <form (submit)="add()">
+    <form (submit)="add()" class="inp">
+      <div class="inpbox">
+        <input type="text" name="newItem" required="required" [(ngModel)]="addName">
+        <label for="newItem">Enter name..</label>
+      </div>
+      <div class="inpbox">
+        <input type="text" name="newItem" required="required" [(ngModel)]="addAmount">
+        <label for="newItem">Enter amount..</label>
+      </div>
+      <div class="inpbox">
+        <input type="text" name="newItem" required="required" [(ngModel)]="addEnergy">
+        <label for="newItem">Enter energy..</label>
+      </div>
+      <div class="inpbox">
+        <input type="text" name="newItem" required="required" [(ngModel)]="addWeight">
+        <label for="newItem">Enter weight..</label>
+      </div>
+      <button (click)="add()">Add</button>
+    </form>
+  </div>
+
+
+  <div class="open" *ngIf="isEdit">
+    <!-- <form (submit)="editi()" class="inp"> -->
     <div class="inpbox">
-      <input type="text" name="newItem" required="required" [(ngModel)]="addName">
+      <input type="text" name="newItem" required="required" [(ngModel)]="editElement.name">
       <label for="newItem">Enter name..</label>
     </div>
     <div class="inpbox">
-      <input type="text" name="newItem" required="required" [(ngModel)]="addEnergy">
+      <input type="text" name="newItem" required="required" [(ngModel)]="editElement.amount">
+      <label for="newItem">Enter amount..</label>
+    </div>
+    <div class="inpbox">
+      <input type="text" name="newItem" required="required" [(ngModel)]="editElement.energy">
       <label for="newItem">Enter energy..</label>
     </div>
     <div class="inpbox">
-      <input type="text" name="newItem" required="required" [(ngModel)]="addWeight">
+      <input type="text" name="newItem" required="required" [(ngModel)]="editElement.weight">
       <label for="newItem">Enter weight..</label>
     </div>
-    <button (click)="add()">Add</button>
-    </form>
+    <button (click)="editi()">Update</button>
+    <!-- </form> -->
   </div>
-  <div class="bar"></div>
 </div>
+
+<div class="bar"></div>
